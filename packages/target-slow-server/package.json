@@ -1,0 +1,11 @@
+{
+  "name": "target-slow-server",
+  "version": "1.0.0",
+  "description": "Slow server for experiment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eron ALves",
+  "license": "ISC"
+}

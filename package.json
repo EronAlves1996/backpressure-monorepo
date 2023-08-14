@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Monorepo maded to experiment on backpressure service",
   "workspaces": [
-    "./packages"
+    "./packages/target-slow-server",
+    "./packages/typescript-config"
   ],
   "author": "Eron Alves",
   "license": "ISC"
