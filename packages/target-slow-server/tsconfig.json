@@ -1,3 +1,7 @@
 {
-  "extends":["typescript-config"]
+    "extends": "typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./out"
+    }
 }
