@@ -2,6 +2,9 @@
   "name": "backpressure-service",
   "version": "1.0.0",
   "description": "Monorepo maded to experiment on backpressure service",
+  "scripts": {
+    "start": "npm run start -w target-slow-server & npm run start -w consuming-request-script"
+  },
   "workspaces": [
     "./packages/*"
   ],

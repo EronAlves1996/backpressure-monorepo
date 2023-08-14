@@ -1,0 +1,12 @@
+{
+  "name": "consuming-request-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node out/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
