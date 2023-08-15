@@ -19,15 +19,13 @@ const runResolveLoop = () => {
     actualBackpressure++;
     const promise = awaitingPromises.shift();
 
-    console.log("Running resolve loop");
-
     if (promise) {
       const processingPromise = {
         isFullfilled: false,
         execute: () => {
-          promise().then((res) => {
-            console.log("run");
+          promise().then(() => {
             processingPromise.isFullfilled = true;
+
             processingPromises = processingPromises.filter(
               (promise) => !promise.isFullfilled
             );
@@ -44,18 +42,13 @@ const runResolveLoop = () => {
   }
 };
 
-const addtoAwaitingPromises = (promise: () => Promise<unknown>) => {
-  awaitingPromises.push(promise);
-};
-
 // Declare a route
 fastify.get("/", function handler(request, reply) {
-  addtoAwaitingPromises(() => {
+  awaitingPromises.push(() => {
     return axios
       .get("http://localhost:3000/", { httpAgent: false })
       .then((result) => {
         reply.send(result.data);
-        return true;
       });
   });
   runResolveLoop();
