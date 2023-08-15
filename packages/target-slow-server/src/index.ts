@@ -3,15 +3,21 @@ const fastify = Fastify({
   logger: true,
 });
 
+let promiseCount = 0;
+
 // Declare a route
-fastify.get("/", async function handler(request, reply) {
-  const message = await new Promise((res) => {
+fastify.get("/", function handler(request, reply) {
+  promiseCount++;
+
+  new Promise((res) => {
     setTimeout(() => {
-      res({ message: "Send after 2 secs" });
+      promiseCount--;
+      res(reply.send({ message: "Send after 2 secs" }));
     }, 2000);
   });
 
-  return message;
+  if (promiseCount >= 200)
+    throw new Error("Server crashed, it has more than 200 processing requests");
 });
 
 (async () => {
